@@ -41,7 +41,7 @@ export default function Home() {
             <article key={post.slug} className="border-b border-gray-200 dark:border-gray-800 pb-6">
               <h2 className="text-2xl font-bold mb-2">
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/${post.slug}`}
                   className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   {post.title}
