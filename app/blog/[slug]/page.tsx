@@ -26,9 +26,10 @@ async function getPost({ slug }: { slug: string }) {
   };
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = await getPost(params);
-  const url = `https://my-blog.com/blog/${params.slug}`;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost({ slug });
+  const url = `https://my-blog.com/blog/${slug}`;
 
   return {
     title: post.title,
@@ -60,9 +61,10 @@ import MdxImage from '@/components/mdx-image';
 
 // ... (generateMetadata remains the same)
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
-  const post = await getPost(params);
-  const url = `https://my-blog.com/blog/${params.slug}`;
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPost({ slug });
+  const url = `https://my-blog.com/blog/${slug}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
