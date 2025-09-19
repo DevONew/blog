@@ -10,11 +10,8 @@ export default function Header() {
         </Link>
         <div className="flex items-center">
           <nav className="mr-4">
-            <Link href="/" className="mr-4">
+            <Link href="/">
               Home
-            </Link>
-            <Link href="/blog">
-              Blog
             </Link>
           </nav>
           <ThemeToggle />
